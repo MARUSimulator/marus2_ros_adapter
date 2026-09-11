@@ -131,7 +131,7 @@ def serve(server_ip: str, server_port: int):
 
 
 def main():
-    rh.init("synthetic_data")
+    rh.init("marus2_ros_adapter")
     server_ip = str(rh.get_param("server_ip") or "0.0.0.0")
     raw_port = rh.get_param("server_port") or rh.get_param("port") or 30052
     server_port = int(raw_port)

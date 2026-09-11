@@ -62,7 +62,7 @@ marus2_ros_adapter/
 ## 2. Core Architectural Patterns
 
 ### 2.1 ROS 2 Singleton Handle (`RosHandle`)
-`marus2_ros_adapter.grpc_utils.ros_handle.RosHandle` provides a centralized singleton access point for the underlying ROS 2 node (`synthetic_data`).
+`marus2_ros_adapter.grpc_utils.ros_handle.RosHandle` provides a centralized singleton access point for the underlying ROS 2 node (`marus2_ros_adapter`).
 
 - Access the node anywhere using:
   ```python
@@ -87,7 +87,7 @@ pub.publish(msg)
 ```
 
 ### 2.3 Streaming from ROS 2 to gRPC (`Streamer`)
-When delivering a stream of ROS 2 subscriber messages back to a gRPC client (e.g. `/tf` or `/markers`):
+When delivering a stream of ROS 2 subscriber messages back to a gRPC client (e.g. `/tf` or `/marus2/marker`):
 1. Wrap the stream in `marus2_ros_adapter.grpc_utils.topic_streamer.Streamer`.
 2. The streamer automatically manages a bounded queue, drops old messages if the gRPC client is slow, and monitors `context.is_active()` to cleanly exit when the client disconnects.
 
@@ -171,7 +171,7 @@ Protobuf messages are defined in the companion [marus2-proto](https://github.com
 
 ### 4.1 Updating the Submodule
 ```bash
-cd ~/marus_ws/src/marus2_ros_adapter
+cd ~/marus2_ws/src/marus2_ros_adapter
 git submodule update --remote marus2_ros_adapter/marus2_proto
 ```
 
@@ -179,7 +179,7 @@ git submodule update --remote marus2_ros_adapter/marus2_proto
 To compile the `.proto` files into Python stubs:
 
 ```bash
-cd ~/marus_ws/src/marus2_ros_adapter/marus2_ros_adapter/marus2_proto
+cd ~/marus2_ws/src/marus2_ros_adapter/marus2_ros_adapter/marus2_proto
 
 # Compile all protos in the directory
 python -m grpc_tools.protoc \

@@ -74,6 +74,7 @@ All client-streaming methods accept an address string (e.g. `vehicle1/camera`) w
 
 ### 2.10 `RequestPointCloud2`
 - **RPC Signature**: `RequestPointCloud2(std.StandardRequest) returns (stream PointCloud2StreamingRequest)`
+- **Subscribed ROS 2 Topic**: `/<address>` (`sensor_msgs/msg/PointCloud2`, default: `/marus2/pointcloud_visualizer`)
 - **Behavior**: Server-streaming endpoint allowing Unity to stream ROS 2 `PointCloud2` messages published by external nodes.
 
 ---
@@ -139,11 +140,11 @@ Allows Unity to visualize ROS 2 markers published by planner or perception nodes
 
 ### 7.1 `SetMarker`
 - **RPC Signature**: `SetMarker(visualization.MarkerRequest) returns (stream visualization.Marker)`
-- **Subscribed ROS 2 Topic**: `/<address>` (`visualization_msgs/msg/Marker`)
+- **Subscribed ROS 2 Topic**: `/<address>` (`visualization_msgs/msg/Marker`, default: `/marus2/marker`)
 
 ### 7.2 `SetMarkerArray`
 - **RPC Signature**: `SetMarkerArray(visualization.MarkerRequest) returns (stream visualization.MarkerArray)`
-- **Subscribed ROS 2 Topic**: `/<address>` (`visualization_msgs/msg/MarkerArray`)
+- **Subscribed ROS 2 Topic**: `/<address>` (`visualization_msgs/msg/MarkerArray`, default: `/marus2/markerArray`)
 
 ---
 

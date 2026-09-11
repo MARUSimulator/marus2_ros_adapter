@@ -59,9 +59,10 @@ While running native ROS 2 client libraries in Unity via C# (e.g. `ros2cs` or DD
 |    - Streamer (Queue-backed server-streaming helper)        |
 |    - Extensions (Fast ROS <-> Proto conversions)            |
 |                                                             |
-|  [ROS 2 Node (rclpy: 'synthetic_data')]                     |
+|  [ROS 2 Node (rclpy: 'marus2_ros_adapter')]                 |
 |    - Publishers (/camera, /imu, /dvl, /tf, /clock)          |
-|    - Subscribers (/tf, /tf_static, /forces, /markers)       |
+|    - Subscribers (/tf, /tf_static, /forces,                 |
+|                   /marus2/marker, /marus2/markerArray)      |
 +-------------------------------------------------------------+
                                |
                        DDS Middleware
@@ -86,7 +87,7 @@ The adapter operates across two distinct concurrency paradigms:
 - Multiple sensors stream concurrently without blocking each other. For instance, high-bandwidth camera streams do not delay high-rate IMU callbacks.
 
 ### 3.2 ROS 2 Node Spinning
-- The ROS 2 node (`synthetic_data`) is initialized using `rclpy`.
+- The ROS 2 node (`marus2_ros_adapter`) is initialized using `rclpy`.
 - `rh.spin()` runs the executor event loop, handling topic subscriptions, timers, and service requests.
 
 ### 3.3 Thread Safety Bridges

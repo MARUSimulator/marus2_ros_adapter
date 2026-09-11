@@ -1,8 +1,3 @@
-[submodule "marus2-proto"]
-	path = marus2_ros_adapter/marus2_proto
-	url = https://github.com/MARUSimulator/marus2-proto.git
-	branch = python
-
 [submodule "marus2_ros_adapter/marus2_proto"]
 	path = marus2_ros_adapter/marus2_proto
 	url = https://github.com/MARUSimulator/marus2-proto.git

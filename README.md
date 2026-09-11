@@ -66,8 +66,8 @@ For detailed architecture diagrams and concurrency models, see [docs/ARCHITECTUR
 
 1. Create or navigate to your ROS 2 colcon workspace:
    ```bash
-   mkdir -p ~/marus_ws/src
-   cd ~/marus_ws/src
+   mkdir -p ~/marus2_ws/src
+   cd ~/marus2_ws/src
    ```
 
 2. Clone this repository:
@@ -83,19 +83,19 @@ For detailed architecture diagrams and concurrency models, see [docs/ARCHITECTUR
 
 4. Clone companion message packages (such as `uuv_sensor_msgs`):
    ```bash
-   cd ~/marus_ws/src
+   cd ~/marus2_ws/src
    git clone -b humble https://github.com/labust/uuv_sensor_msgs.git
    ```
 
 5. Install Python dependencies:
    ```bash
-   cd ~/marus_ws/src/marus2_ros_adapter
+   cd ~/marus2_ws/src/marus2_ros_adapter
    pip install -r requirements.txt
    ```
 
 6. Install ROS dependencies via `rosdep`:
    ```bash
-   cd ~/marus_ws
+   cd ~/marus2_ws
    rosdep update
    rosdep install --from-paths src --ignore-src -r -y
    ```
@@ -107,7 +107,7 @@ For detailed architecture diagrams and concurrency models, see [docs/ARCHITECTUR
 Build the workspace using `colcon`:
 
 ```bash
-cd ~/marus_ws
+cd ~/marus2_ws
 colcon build --symlink-install --packages-select marus2_ros_adapter
 ```
 
@@ -157,7 +157,7 @@ ros2 run marus2_ros_adapter server --ros-args -p server_port:=30052
 The test suite includes offline mocks, allowing tests to run in any Python environment (with or without ROS 2 sourced):
 
 ```bash
-cd ~/marus_ws/src/marus2_ros_adapter
+cd ~/marus2_ws/src/marus2_ros_adapter
 pytest tests/ -v
 ```
 
@@ -177,9 +177,9 @@ Detailed documentation is available in the `docs/` folder:
 
 ## 8. Related Repositories
 
-- **[marus-core](https://github.com/MARUSimulator/marus-core)**: Unity package containing core simulator assets, physics, and sensor implementations.
+- **[marus2-core](https://github.com/MARUSimulator/marus2-core)**: Unity package containing core simulator assets, physics, and sensor implementations.
 - **[marus2-proto](https://github.com/MARUSimulator/marus2-proto)**: Protobuf message and service definitions.
-- **[marus-example](https://github.com/MARUSimulator/marus-example)**: Example scenes and integration demonstrations.
+- **[marus2-example](https://github.com/MARUSimulator/marus2-example)**: Example scenes and integration demonstrations.
 - **[uuv_sensor_msgs](https://github.com/labust/uuv_sensor_msgs)**: Underwater sensor message definitions for ROS 2.
 
 ---
