@@ -268,7 +268,7 @@ def publish_pointcloud2(request, context):
     pointcloud_msg.is_bigendian = bool(request.data.isBigEndian)
     pointcloud_msg.point_step = int(request.data.pointStep)
     pointcloud_msg.row_step = int(request.data.rowStep)
-    pointcloud_msg.is_dense = bool(request.data.is_dense)
+    pointcloud_msg.is_dense = bool(request.data.isDense)
 
     pub = RosPublisherRegistry.get_publisher(request.address.lower(), PointCloud2)
     pub.publish(pointcloud_msg)
