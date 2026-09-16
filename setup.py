@@ -21,7 +21,6 @@ setup(
     maintainer_email='labust@fer.hr',
     description='Bridges and translates messages between ROS 2 and Unity MARUS simulator using gRPC',
     license='Apache-2.0',
-    tests_require=['pytest'],
     entry_points={
         'console_scripts': [
             f'server = {package_name}.server:main',

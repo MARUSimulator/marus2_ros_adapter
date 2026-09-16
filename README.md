@@ -84,37 +84,41 @@ For detailed architecture diagrams and concurrency models, see [docs/ARCHITECTUR
 4. Clone companion message packages (such as `uuv_sensor_msgs`):
    ```bash
    cd ~/marus2_ws/src
-   git clone -b humble https://github.com/labust/uuv_sensor_msgs.git
+   git clone -b ros2 https://github.com/labust/uuv_sensor_msgs.git
    ```
 
-5. Install Python dependencies:
-   ```bash
-   cd ~/marus2_ws/src/marus2_ros_adapter
-   pip install -r requirements.txt
-   ```
-
-6. Install ROS dependencies via `rosdep`:
+5. Install dependencies via `rosdep`:
    ```bash
    cd ~/marus2_ws
+   # Run once if rosdep has not been initialized on this machine:
+   # sudo rosdep init
    rosdep update
    rosdep install --from-paths src --ignore-src -r -y
    ```
+
+   > [!NOTE]
+   > All required Python and ROS dependencies (such as `python3-grpcio`, `python3-protobuf`, `python3-opencv`, `python3-yaml`, and `cv_bridge`) are declared in `package.xml` and installed via `rosdep`. If you are developing in a standalone Python virtual environment without ROS 2, you can install via `pip install -r requirements.txt`.
 
 ---
 
 ## 4. Building the Package
 
-Build the workspace using `colcon`:
+1. Source your underlying ROS 2 installation (if not already sourced in your terminal):
+   ```bash
+   source /opt/ros/<ros2-distro>/setup.bash   # e.g., lyrical, jazzy, humble, or rolling
+   ```
 
-```bash
-cd ~/marus2_ws
-colcon build --symlink-install --packages-select marus2_ros_adapter
-```
+2. Build the workspace using `colcon`:
+   ```bash
+   cd ~/marus2_ws
+   colcon build --symlink-install --packages-up-to marus2_ros_adapter
+   ```
+   *(Or simply run `colcon build --symlink-install` to build all packages in the workspace including `uuv_sensor_msgs`).*
 
-Source the workspace overlay:
-```bash
-source install/setup.bash
-```
+3. Source the workspace overlay:
+   ```bash
+   source install/setup.bash
+   ```
 
 ---
 
